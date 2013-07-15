@@ -1,6 +1,8 @@
 var fs = require('fs'),
-    fileName = process.argv[2],
-    cleanedFileName = fileName.replace(/\.json/, '_cleaned.json'),
+    argv = require('optimist').default('pp', true).argv,
+    fileName = argv._[0],
+    cleanedFileName = fileName.replace(/\.geo\.json/, '_cleaned.geo.json'),
+    prettyPrint = argv.pp,
     geoJSONToClean = require(fileName),
     propsToRetain = [
       'iso_3166_2',
@@ -12,7 +14,8 @@ var fs = require('fs'),
       'abbrev',
       'postal',
       'admin'
-    ];
+    ],
+    output;
 
 function cleanFeature(feature) {
   var props = feature.properties;
@@ -26,7 +29,12 @@ function cleanFeature(feature) {
 
 geoJSONToClean.features.forEach(cleanFeature);
 
-fs.writeFile(cleanedFileName, JSON.stringify(geoJSONToClean, null, 4), function(err) {
+// Go ahead and delete this , just in case, the gqis tool added it.
+delete geoJSONToClean[ 'crs' ];
+
+output = prettyPrint ? JSON.stringify(geoJSONToClean, null, 4) : JSON.stringify(geoJSONToClean);
+
+fs.writeFile(cleanedFileName, output, function(err) {
   if (err) {
     console.log(err);
   } else {

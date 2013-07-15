@@ -1,0 +1,20 @@
+{
+  "name": "geojson",
+  "version": "0.0.1",
+  "description": "Collection of GeoJSON files and tools",
+  "main": "cleanProps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acmcelwee/geojson.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "gitHead": "204f48178967c3ecd4adc502a758ea8a28628372",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "optimist": "0.6.0"
+  }
+}
