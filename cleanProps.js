@@ -30,9 +30,9 @@ function cleanFeature(feature) {
 geoJSONToClean.features.forEach(cleanFeature);
 
 // Go ahead and delete this , just in case, the gqis tool added it.
-delete geoJSONToClean[ 'crs' ];
+delete geoJSONToClean.crs;
 
-output = prettyPrint ? JSON.stringify(geoJSONToClean, null, 4) : JSON.stringify(geoJSONToClean);
+output = prettyPrint ? JSON.stringify(geoJSONToClean, null, 2) : JSON.stringify(geoJSONToClean);
 
 fs.writeFile(cleanedFileName, output, function(err) {
   if (err) {
