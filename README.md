@@ -6,6 +6,7 @@ npm install
 ```
 
 # Notes
+Simplify your shapefile here http://mapshaper.org/
 ```bash
 
 # Convert shapefile to geojson and extract relevant country/countries
